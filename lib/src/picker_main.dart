@@ -33,7 +33,7 @@ class _PickerMainContentState extends State<PickerMainContent> {
       child: Column(
         children: [
           _ContentHeader(
-            title: '${months[vm.monthIndex]}',
+            title: '${months[vm.monthIndex - 1]}',
             leftCallback: vm.prevPage,
             rightCallback: vm.nextPage,
           ),
