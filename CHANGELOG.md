@@ -21,3 +21,7 @@
 ## [1.0.0] - fix-3
 
 * Remove widget and change language
+
+## [1.0.2] - fix-4
+
+* update pubspec
