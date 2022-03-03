@@ -9,7 +9,9 @@ import 'picker_main.dart';
 import 'picker_model.dart';
 
 class DataRangePicker extends StatefulWidget {
-  DataRangePicker({Key? key, required this.selectRange, required this.validRange}) : super(key: key);
+  DataRangePicker(
+      {Key? key, required this.selectRange, required this.validRange})
+      : super(key: key);
 
   final CustomDateTimeRange selectRange;
   final CustomDateTimeRange validRange;
@@ -37,7 +39,9 @@ class _DataRangePickerState extends State<DataRangePicker> {
                 alignment: Alignment.bottomCenter,
                 child: Material(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10.w), topRight: Radius.circular(10.w)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.w),
+                      topRight: Radius.circular(10.w)),
                   child: Consumer<PickerModel>(
                     builder: (context, vm, child) {
                       return SafeArea(
@@ -48,7 +52,9 @@ class _DataRangePickerState extends State<DataRangePicker> {
                           width: double.infinity,
                           height: 436.w + 40.w,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10.w), topRight: Radius.circular(10.w)),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10.w),
+                                topRight: Radius.circular(10.w)),
                             color: Colors.white,
                           ),
                           child: Column(

@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'month_item_widget.dart';
 
 class PickerModel extends ChangeNotifier {
+  late int currentIndex;
   PickerModel({required this.selectRange, required this.validRange}) {
     /// 这里为了 copy 赋值，不会修改外面的值
-    selectRange = CustomDateTimeRange(start: selectRange.start, end: selectRange.end);
+    selectRange =
+        CustomDateTimeRange(start: selectRange.start, end: selectRange.end);
     if (selectRange.start != null) {
       selectRange.start = DateUtils.dateOnly(selectRange.start!);
     }
@@ -21,13 +22,15 @@ class PickerModel extends ChangeNotifier {
     } else {
       pageIndex = _findIndexForDay(DateTime.now());
     }
+    currentIndex = pageIndex;
     pageController = PageController(initialPage: pageIndex);
   }
 
   int _findIndexForDay(DateTime date) {
     int retIndex = 0;
     for (int index = 0;; index++) {
-      final DateTime month = DateUtils.addMonthsToMonthDate(DateTime(validRange.start!.year, validRange.start!.month), index);
+      final DateTime month = DateUtils.addMonthsToMonthDate(
+          DateTime(validRange.start!.year, validRange.start!.month), index);
       if (month.month == date.month && month.year == date.year) {
         retIndex = index;
         break;
@@ -40,7 +43,8 @@ class PickerModel extends ChangeNotifier {
   }
 
   CustomDateTimeRange selectRange;
-  CustomDateTimeRange validRange = CustomDateTimeRange(start: DateTime(2021, 7), end: DateTime(2022, 7));
+  CustomDateTimeRange validRange =
+      CustomDateTimeRange(start: DateTime(2020, 1), end: DateTime(2100, 12));
 
   int pageIndex = 1;
   PageController pageController = PageController(initialPage: 0);
@@ -49,6 +53,21 @@ class PickerModel extends ChangeNotifier {
     var res = (pageIndex + validRange.start!.month) % 12;
     return res == 0 ? 12 : res;
   }
+
+  int get yearIndex{
+    int counter = 0;
+    var y = (currentIndex / 12).floor();
+    if(pageIndex <= currentIndex){
+      if((pageIndex / 12).floor() < y){
+        counter -= (pageIndex / 12).floor();
+      }
+    }else{
+      if((pageIndex / 12).floor() > y){
+        counter += (pageIndex / 12).floor();
+      }
+    }
+    return validRange.start!.year + counter;
+}
 
   void dispose() {
     super.dispose();
@@ -66,15 +85,18 @@ class PickerModel extends ChangeNotifier {
   }
 
   void nextPage() {
-    pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    pageController.nextPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
   void prevPage() {
-    pageController.previousPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    pageController.previousPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
   void animateToPage(int index) {
-    pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    pageController.animateToPage(index,
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
   void updatePageIndex(int index) {

@@ -95,11 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void showCustomRangePicker() async {
     var res = await showTCRDateRangePicker(
       context: context,
-      // selectRange: CustomDateTimeRange(start: DateTime.now(), end: DateTime.now().add(Duration(days: 6))),
       selectRange: CustomDateTimeRange(),
-      validRange: CustomDateTimeRange(start: DateTime(2021, 1), end: DateTime(2022, 7)),
+      validRange:
+          CustomDateTimeRange(start: DateTime(2022, 1), end: DateTime(2023, 7)),
     );
-    print('res = $res');
+    if(res != null){
+      print('res = ${res.start} => ${res.end}');
+    }
+
   }
 
   void showSystemRangePicker() async {}
@@ -114,8 +117,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextButton(onPressed: showCustomRangePicker, child: Text('show date range picker')),
-            TextButton(onPressed: showCustomRangePicker, child: Text('show system date range picker')),
+            TextButton(
+                onPressed: showCustomRangePicker,
+                child: Text('show date range picker')),
+            TextButton(
+                onPressed: showCustomRangePicker,
+                child: Text('show system date range picker')),
           ],
         ),
       ),

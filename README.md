@@ -1,4 +1,6 @@
-## z_date_range_picker
+## date_range_picker_flutter
+This package originally from z_date_range_picker and also modified some widget and language.
+Enjoy!.
 
 Shows a full screen modal dialog containing a Material Design date range picker.
 
@@ -8,7 +10,6 @@ Shows a full screen modal dialog containing a Material Design date range picker.
 void showCustomRangePicker() async {
     var res = await showTCRDateRangePicker(
       context: context,
-      // selectRange: CustomDateTimeRange(start: DateTime.now(), end: DateTime.now().add(Duration(days: 6))),
       selectRange: CustomDateTimeRange(),
       validRange: CustomDateTimeRange(start: DateTime(2021, 1), end: DateTime(2022, 7)),
     );

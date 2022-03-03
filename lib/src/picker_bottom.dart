@@ -36,7 +36,10 @@ class PickerBottom extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Cancel',
-                  style: TextStyle(fontSize: 16.w, fontWeight: FontWeight.bold, color: Color(0xFF292D3E)),
+                  style: TextStyle(
+                      fontSize: 16.w,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF292D3E)),
                 ),
               ),
             ),
@@ -57,7 +60,10 @@ class PickerBottom extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'Submit',
-                    style: TextStyle(fontSize: 16.w, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 16.w,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ),
               ),

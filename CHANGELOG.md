@@ -17,3 +17,7 @@
 ## [0.0.5] - fix-2
 
 * show effect image
+
+## [0.0.6] - fix-3
+
+* Remove widget and change language

@@ -15,8 +15,20 @@ class PickerMainContent extends StatefulWidget {
 }
 
 class _PickerMainContentState extends State<PickerMainContent> {
-
-  List months = ['Januari','Febuari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+  List months = [
+    'Januari',
+    'Febuari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+  ];
 
   @override
   void initState() {
@@ -33,7 +45,7 @@ class _PickerMainContentState extends State<PickerMainContent> {
       child: Column(
         children: [
           _ContentHeader(
-            title: '${months[vm.monthIndex - 1]}',
+            title: '${months[vm.monthIndex - 1]} ${vm.yearIndex}' ,
             leftCallback: vm.prevPage,
             rightCallback: vm.nextPage,
           ),
@@ -44,7 +56,10 @@ class _PickerMainContentState extends State<PickerMainContent> {
               child: PageView.builder(
                 controller: vm.pageController,
                 itemBuilder: (BuildContext context, int index) {
-                  final DateTime month = DateUtils.addMonthsToMonthDate(DateTime(vm.validRange.start!.year, vm.validRange.start!.month), index);
+                  final DateTime month = DateUtils.addMonthsToMonthDate(
+                      DateTime(vm.validRange.start!.year,
+                          vm.validRange.start!.month),
+                      index);
                   return Container(
                     color: Colors.white,
                     child: MonthItemWidget(
@@ -70,7 +85,8 @@ class _ContentHeader extends StatelessWidget {
   final String title;
   final VoidCallback? leftCallback;
   final VoidCallback? rightCallback;
-  const _ContentHeader({this.title = '', this.leftCallback, this.rightCallback});
+  const _ContentHeader(
+      {this.title = '', this.leftCallback, this.rightCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +132,9 @@ class _ArrowBtn extends StatelessWidget {
         height: 40.w,
         color: Colors.transparent,
         child: Icon(
-          isLeft ? Icons.arrow_back_ios_rounded : Icons.arrow_forward_ios_rounded,
+          isLeft
+              ? Icons.arrow_back_ios_rounded
+              : Icons.arrow_forward_ios_rounded,
           size: 16.w,
           color: Color(0xFF80838D),
         ),
