@@ -18,6 +18,6 @@ void showCustomRangePicker() async {
 ```
 ## Images
 
-<img src="https://raw.githubusercontent.com/rezins/date_range_picker_flutter/main/example/asset/example.png" alt="test receipt" height="484" width="863"/>
+<img src="https://raw.githubusercontent.com/rezins/date_range_picker_flutter/main/example/asset/example.png" />
 
 
